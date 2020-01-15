@@ -21,19 +21,19 @@ public extension TableModel {
         return sections.count
     }
     
-    func numberOfCellsInSection(atIndex index: Int) -> Int {
+    func numberOfCellsInSection(at index: Int) -> Int {
         return sectionObject(at: index)?.cellObjects.count ?? 0
     }
     
-    func reuseIdentifierForSectionHeader(atIndex index: Int) -> String? {
+    func reuseIdentifierForSectionHeader(at index: Int) -> String? {
         return sectionObject(at: index)?.headerObject?.reuseIdentifier
     }
     
-    func reuseIdentifierForSectionFooter(atIndex index: Int) -> String? {
+    func reuseIdentifierForSectionFooter(at index: Int) -> String? {
         return sectionObject(at: index)?.footerObject?.reuseIdentifier
     }
     
-    func reuseIdentifierForCell(atIndexPath indexPath: IndexPath) -> String {
+    func reuseIdentifierForCell(at indexPath: IndexPath) -> String {
         return cellObject(at: indexPath)?.reuseIdentifier ?? UITableViewCell.unavailableReuseIdentifier
     }
     
@@ -87,15 +87,15 @@ public extension TableModel {
     
     // MARK: - TableModelRepresentable
     
-    func modelForSectionHeader(atIndex index: Int) -> TableSypplyViewModel? {
+    func modelForSectionHeader(at index: Int) -> TableSypplyViewModel? {
         return sectionObject(at: index)?.headerObject?.viewModel
     }
     
-    func modelForSectionFooter(atIndex index: Int) -> TableSypplyViewModel? {
+    func modelForSectionFooter(at index: Int) -> TableSypplyViewModel? {
         return sectionObject(at: index)?.footerObject?.viewModel
     }
     
-    func modelForCell(atIndexPath indexPath: IndexPath) -> TableCellModel? {
+    func modelForCell(at indexPath: IndexPath) -> TableCellModel? {
         return cellObject(at: indexPath)?.cellModel
     }
     

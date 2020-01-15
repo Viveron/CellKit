@@ -10,9 +10,9 @@ import UIKit
 
 public protocol TableModelRepresentable: ModelRepresentable, ModelIdentifiable {
     
-    func modelForSectionHeader(atIndex index: Int) -> TableSypplyViewModel?
+    func modelForSectionHeader(at index: Int) -> TableSypplyViewModel?
 
-    func modelForSectionFooter(atIndex index: Int) -> TableSypplyViewModel?
+    func modelForSectionFooter(at index: Int) -> TableSypplyViewModel?
     
-    func modelForCell(atIndexPath indexPath: IndexPath) -> TableCellModel?
+    func modelForCell(at indexPath: IndexPath) -> TableCellModel?
 }
