@@ -1,0 +1,6 @@
+framework module CellKit {
+  umbrella header "CellKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

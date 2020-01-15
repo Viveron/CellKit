@@ -1,0 +1,16 @@
+PODS:
+  - CellKit (0.1.0)
+
+DEPENDENCIES:
+  - CellKit (from `../`)
+
+EXTERNAL SOURCES:
+  CellKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CellKit: 7ee235aabfb61103988933e4511927d9e670f4d2
+
+PODFILE CHECKSUM: 94f2c903848a5286b55af7b10cb31052c0ed0009
+
+COCOAPODS: 1.8.4
