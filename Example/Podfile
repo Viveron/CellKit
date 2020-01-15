@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CellKit_Example' do
+  pod 'CellKit', :path => '../'
+
+  target 'CellKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
