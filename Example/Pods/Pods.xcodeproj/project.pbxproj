@@ -14,6 +14,16 @@
 		0C27813223CFBBDB00B1BCE0 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27813123CFBBDB00B1BCE0 /* ConfigurableView.swift */; };
 		0C27813523CFBC6A00B1BCE0 /* ModelIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27813423CFBC6A00B1BCE0 /* ModelIdentifiable.swift */; };
 		0C27813723CFBCC800B1BCE0 /* ModelRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27813623CFBCC800B1BCE0 /* ModelRepresentable.swift */; };
+		0C27813C23CFC74B00B1BCE0 /* TableMeasurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27813B23CFC74B00B1BCE0 /* TableMeasurable.swift */; };
+		0C27813F23CFC86400B1BCE0 /* TableCellObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27813E23CFC86400B1BCE0 /* TableCellObject.swift */; };
+		0C27814123CFC87900B1BCE0 /* TableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27814023CFC87900B1BCE0 /* TableCellModel.swift */; };
+		0C27814423CFC8A000B1BCE0 /* TableSypplyViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27814323CFC8A000B1BCE0 /* TableSypplyViewObject.swift */; };
+		0C27814623CFC8B500B1BCE0 /* TableSypplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27814523CFC8B500B1BCE0 /* TableSypplyViewModel.swift */; };
+		0C27814C23CFC90C00B1BCE0 /* UITableView+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27814B23CFC90C00B1BCE0 /* UITableView+Constants.swift */; };
+		0C27814E23CFC92300B1BCE0 /* UITableViewCell+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27814D23CFC92300B1BCE0 /* UITableViewCell+Constants.swift */; };
+		0C27815123CFC95300B1BCE0 /* TableSectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27815023CFC95300B1BCE0 /* TableSectionObject.swift */; };
+		0C27815423CFC98F00B1BCE0 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27815323CFC98F00B1BCE0 /* TableModel.swift */; };
+		0C27815623CFC9EE00B1BCE0 /* TableModelRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27815523CFC9EE00B1BCE0 /* TableModelRepresentable.swift */; };
 		2F46BF74FE5A6E6DE710C4AD491B0AB0 /* Pods-CellKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D0F2B36E65D68CDE3308DE07C3C860 /* Pods-CellKit_Example-dummy.m */; };
 		6280FCC12DF271AF8B68522237EE551F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		83375438EE5950A52D4A23960DC66FAF /* Pods-CellKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 25ADFECDB448FE75A8B63256F4579B6B /* Pods-CellKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,6 +59,16 @@
 		0C27813123CFBBDB00B1BCE0 /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
 		0C27813423CFBC6A00B1BCE0 /* ModelIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelIdentifiable.swift; sourceTree = "<group>"; };
 		0C27813623CFBCC800B1BCE0 /* ModelRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRepresentable.swift; sourceTree = "<group>"; };
+		0C27813B23CFC74B00B1BCE0 /* TableMeasurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableMeasurable.swift; sourceTree = "<group>"; };
+		0C27813E23CFC86400B1BCE0 /* TableCellObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellObject.swift; sourceTree = "<group>"; };
+		0C27814023CFC87900B1BCE0 /* TableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellModel.swift; sourceTree = "<group>"; };
+		0C27814323CFC8A000B1BCE0 /* TableSypplyViewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSypplyViewObject.swift; sourceTree = "<group>"; };
+		0C27814523CFC8B500B1BCE0 /* TableSypplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSypplyViewModel.swift; sourceTree = "<group>"; };
+		0C27814B23CFC90C00B1BCE0 /* UITableView+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Constants.swift"; sourceTree = "<group>"; };
+		0C27814D23CFC92300B1BCE0 /* UITableViewCell+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Constants.swift"; sourceTree = "<group>"; };
+		0C27815023CFC95300B1BCE0 /* TableSectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionObject.swift; sourceTree = "<group>"; };
+		0C27815323CFC98F00B1BCE0 /* TableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
+		0C27815523CFC9EE00B1BCE0 /* TableModelRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModelRepresentable.swift; sourceTree = "<group>"; };
 		169A8FB67A32DF92C6781C451B571DD1 /* Pods-CellKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CellKit_Tests.modulemap"; sourceTree = "<group>"; };
 		25757FCC84E648DA51EEEF45188D0D7C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		25ADFECDB448FE75A8B63256F4579B6B /* Pods-CellKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CellKit_Example-umbrella.h"; sourceTree = "<group>"; };
@@ -155,6 +175,79 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0C27813923CFC73500B1BCE0 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				0C27815223CFC97800B1BCE0 /* Model */,
+				0C27813A23CFC73E00B1BCE0 /* Measurable */,
+				0C27814223CFC88F00B1BCE0 /* SypplyView */,
+				0C27814F23CFC94500B1BCE0 /* Section */,
+				0C27813D23CFC83200B1BCE0 /* Cell */,
+			);
+			name = Table;
+			path = CellKit/Classes/Table;
+			sourceTree = "<group>";
+		};
+		0C27813A23CFC73E00B1BCE0 /* Measurable */ = {
+			isa = PBXGroup;
+			children = (
+				0C27813B23CFC74B00B1BCE0 /* TableMeasurable.swift */,
+			);
+			path = Measurable;
+			sourceTree = "<group>";
+		};
+		0C27813D23CFC83200B1BCE0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0C27813E23CFC86400B1BCE0 /* TableCellObject.swift */,
+				0C27814023CFC87900B1BCE0 /* TableCellModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0C27814223CFC88F00B1BCE0 /* SypplyView */ = {
+			isa = PBXGroup;
+			children = (
+				0C27814323CFC8A000B1BCE0 /* TableSypplyViewObject.swift */,
+				0C27814523CFC8B500B1BCE0 /* TableSypplyViewModel.swift */,
+			);
+			path = SypplyView;
+			sourceTree = "<group>";
+		};
+		0C27814723CFC8E100B1BCE0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C27814A23CFC90000B1BCE0 /* UITableView */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0C27814A23CFC90000B1BCE0 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				0C27814B23CFC90C00B1BCE0 /* UITableView+Constants.swift */,
+				0C27814D23CFC92300B1BCE0 /* UITableViewCell+Constants.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		0C27814F23CFC94500B1BCE0 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				0C27815023CFC95300B1BCE0 /* TableSectionObject.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		0C27815223CFC97800B1BCE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C27815523CFC9EE00B1BCE0 /* TableModelRepresentable.swift */,
+				0C27815323CFC98F00B1BCE0 /* TableModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1075BE3D8F7D3086C743BCA213D134B8 /* Pods-CellKit_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,7 +284,9 @@
 		618330C3C52AEF37C99446B38A474AE9 /* CellKit */ = {
 			isa = PBXGroup;
 			children = (
+				0C27814723CFC8E100B1BCE0 /* Extensions */,
 				0C27812723CFBA9700B1BCE0 /* Common */,
+				0C27813923CFC73500B1BCE0 /* Table */,
 				7F6E313CF5E9964D05D4C88754DB846D /* Pod */,
 				D415A6880F53FBFA4BC5F8DEAE2BE5A8 /* Support Files */,
 			);
@@ -435,12 +530,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C27814C23CFC90C00B1BCE0 /* UITableView+Constants.swift in Sources */,
+				0C27814E23CFC92300B1BCE0 /* UITableViewCell+Constants.swift in Sources */,
 				0C27813223CFBBDB00B1BCE0 /* ConfigurableView.swift in Sources */,
+				0C27813C23CFC74B00B1BCE0 /* TableMeasurable.swift in Sources */,
+				0C27815423CFC98F00B1BCE0 /* TableModel.swift in Sources */,
 				0C27812A23CFBB3D00B1BCE0 /* Reusable.swift in Sources */,
 				0C27812F23CFBBBD00B1BCE0 /* Identifiable+Hashable.swift in Sources */,
+				0C27813F23CFC86400B1BCE0 /* TableCellObject.swift in Sources */,
 				0C27813723CFBCC800B1BCE0 /* ModelRepresentable.swift in Sources */,
+				0C27815623CFC9EE00B1BCE0 /* TableModelRepresentable.swift in Sources */,
+				0C27814623CFC8B500B1BCE0 /* TableSypplyViewModel.swift in Sources */,
+				0C27814123CFC87900B1BCE0 /* TableCellModel.swift in Sources */,
+				0C27815123CFC95300B1BCE0 /* TableSectionObject.swift in Sources */,
 				0C27813523CFBC6A00B1BCE0 /* ModelIdentifiable.swift in Sources */,
 				0C27812D23CFBBA100B1BCE0 /* Identifiable.swift in Sources */,
+				0C27814423CFC8A000B1BCE0 /* TableSypplyViewObject.swift in Sources */,
 				B8D732C5D40E2184F43F1BEF6276E8CE /* CellKit-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
