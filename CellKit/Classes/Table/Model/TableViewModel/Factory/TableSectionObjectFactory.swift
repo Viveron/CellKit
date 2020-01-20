@@ -21,14 +21,32 @@ public class TableSectionObjectFactory {
                                 cellObjects: cellObjects)
     }
     
+    // MARK: - Changes of object
+    
     public func change(in sectionObject: TableSectionObject,
-                       headerObject: TableSypplyViewObject? = nil,
-                       footerObject: TableSypplyViewObject? = nil,
-                       cellObjects: [TableCellObject]? = nil) -> TableSectionObject {
+                       headerObject: TableSypplyViewObject? = nil) -> TableSectionObject {
         
         return TableViewSection(id: sectionObject.id,
-                                headerObject: headerObject ?? sectionObject.headerObject,
-                                footerObject: footerObject ?? sectionObject.footerObject,
-                                cellObjects: cellObjects ?? sectionObject.cellObjects)
+                                headerObject: headerObject,
+                                footerObject: sectionObject.footerObject,
+                                cellObjects: sectionObject.cellObjects)
+    }
+    
+    public func change(in sectionObject: TableSectionObject,
+                       footerObject: TableSypplyViewObject? = nil) -> TableSectionObject {
+        
+        return TableViewSection(id: sectionObject.id,
+                                headerObject: sectionObject.headerObject,
+                                footerObject: footerObject,
+                                cellObjects: sectionObject.cellObjects)
+    }
+    
+    public func change(in sectionObject: TableSectionObject,
+                       cellObjects: [TableCellObject] = []) -> TableSectionObject {
+        
+        return TableViewSection(id: sectionObject.id,
+                                headerObject: sectionObject.headerObject,
+                                footerObject: sectionObject.footerObject,
+                                cellObjects: cellObjects)
     }
 }
