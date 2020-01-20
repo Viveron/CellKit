@@ -11,8 +11,8 @@ import Foundation
 public class TableSectionObjectFactory {
     
     public func makeSectionObject(id: String = UUID().uuidString,
-                                  headerObject: TableSypplyViewObject? = nil,
-                                  footerObject: TableSypplyViewObject? = nil,
+                                  headerObject: TableSupplyViewObject? = nil,
+                                  footerObject: TableSupplyViewObject? = nil,
                                   cellObjects: [TableCellObject] = []) -> TableSectionObject {
         
         return TableViewSection(id: id,
@@ -24,7 +24,7 @@ public class TableSectionObjectFactory {
     // MARK: - Changes of object
     
     public func change(in sectionObject: TableSectionObject,
-                       headerObject: TableSypplyViewObject? = nil) -> TableSectionObject {
+                       headerObject: TableSupplyViewObject? = nil) -> TableSectionObject {
         
         return TableViewSection(id: sectionObject.id,
                                 headerObject: headerObject,
@@ -33,7 +33,7 @@ public class TableSectionObjectFactory {
     }
     
     public func change(in sectionObject: TableSectionObject,
-                       footerObject: TableSypplyViewObject? = nil) -> TableSectionObject {
+                       footerObject: TableSupplyViewObject? = nil) -> TableSectionObject {
         
         return TableViewSection(id: sectionObject.id,
                                 headerObject: sectionObject.headerObject,

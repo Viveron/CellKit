@@ -16,13 +16,13 @@ public struct TableViewSection: TableSectionObject, Hashable {
     
     // MARK: - TableSectionObject
     
-    public let headerObject: TableSypplyViewObject?
-    public let footerObject: TableSypplyViewObject?
+    public let headerObject: TableSupplyViewObject?
+    public let footerObject: TableSupplyViewObject?
     public let cellObjects: [TableCellObject]
     
     public init(id: String = UUID().uuidString,
-                headerObject: TableSypplyViewObject? = nil,
-                footerObject: TableSypplyViewObject? = nil,
+                headerObject: TableSupplyViewObject? = nil,
+                footerObject: TableSupplyViewObject? = nil,
                 cellObjects: [TableCellObject] = []) {
         
         self.id = id

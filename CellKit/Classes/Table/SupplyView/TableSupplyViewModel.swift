@@ -1,5 +1,5 @@
 //
-//  TableSypplyViewModel.swift
+//  TableSupplyViewModel.swift
 //  CellKit
 //
 //  Created by Victor Shabanov on 16.01.2020.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-public protocol TableSypplyViewModel: TableMeasurable, Identifiable {
+public protocol TableSupplyViewModel: TableMeasurable, Identifiable {
     
 }
 
 // MARK: - Identifiable
-public extension TableSypplyViewModel {
+public extension TableSupplyViewModel {
     
     var id: String {
         return UUID().uuidString
@@ -21,7 +21,7 @@ public extension TableSypplyViewModel {
 }
 
 // MARK: - TableMeasurable
-public extension TableSypplyViewModel {
+public extension TableSupplyViewModel {
     
     var prefferedHeight: CGFloat? {
         return UITableView.zeroDimension

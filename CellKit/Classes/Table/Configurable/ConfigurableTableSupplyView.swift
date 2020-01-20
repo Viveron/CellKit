@@ -10,5 +10,5 @@ import Foundation
 
 public protocol ConfigurableTableSupplyView {
     
-    func configure(with cellModel: TableSypplyViewModel)
+    func configure(with cellModel: TableSupplyViewModel)
 }

@@ -25,16 +25,16 @@ public extension TableModel {
         return sectionObject(at: index)?.cellObjects.count ?? 0
     }
     
-    func reuseIdentifierForSectionHeader(at index: Int) -> String? {
-        return sectionObject(at: index)?.headerObject?.reuseIdentifier
+    func reusableForSectionHeader(at index: Int) -> Reusable? {
+        return sectionObject(at: index)?.headerObject
     }
     
-    func reuseIdentifierForSectionFooter(at index: Int) -> String? {
-        return sectionObject(at: index)?.footerObject?.reuseIdentifier
+    func reusableForSectionFooter(at index: Int) -> Reusable? {
+        return sectionObject(at: index)?.footerObject
     }
     
-    func reuseIdentifierForCell(at indexPath: IndexPath) -> String {
-        return cellObject(at: indexPath)?.reuseIdentifier ?? UITableViewCell.unavailableReuseIdentifier
+    func reusableForCell(at indexPath: IndexPath) -> Reusable? {
+        return cellObject(at: indexPath)
     }
     
     // MARK: - ModelIdentifiable
@@ -87,11 +87,11 @@ public extension TableModel {
     
     // MARK: - TableModelRepresentable
     
-    func modelForSectionHeader(at index: Int) -> TableSypplyViewModel? {
+    func modelForSectionHeader(at index: Int) -> TableSupplyViewModel? {
         return sectionObject(at: index)?.headerObject?.viewModel
     }
     
-    func modelForSectionFooter(at index: Int) -> TableSypplyViewModel? {
+    func modelForSectionFooter(at index: Int) -> TableSupplyViewModel? {
         return sectionObject(at: index)?.footerObject?.viewModel
     }
     

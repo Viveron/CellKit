@@ -6,9 +6,9 @@
 //  Copyright © 2020 Victor Shabanov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-public class TableViewModel: TableModel {
+public class TableViewModel: NSObject, TableModel, UITableViewDataSource {
     
     public private(set) var sections: [TableSectionObject]
     
@@ -27,6 +27,33 @@ public class TableViewModel: TableModel {
     public init(_ sections: [TableSectionObject] = []) {
         self.sections = sections
         self.factory = .init()
+        super.init()
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return numberOfSections()
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfCellsInSection(at: section)
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let reuseIdentifier: String
+        if let reusable = reusableForCell(at: indexPath) {
+            reuseIdentifier = tableView.registerCell(reusable)
+        } else {
+            reuseIdentifier = UITableViewCell.unavailableReuseIdentifier
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        if let configurable = cell as? ConfigurableTableCell, let model = modelForCell(at: indexPath) {
+            configurable.configure(with: model)
+        }
+        
+        return cell
     }
     
     // MARK: - TableSectionObject mutations
