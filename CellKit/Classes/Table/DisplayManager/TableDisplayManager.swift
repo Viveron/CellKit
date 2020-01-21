@@ -11,6 +11,7 @@ import UIKit
 public class TableDisplayManager {
     
     public private(set) var model: TableViewModel
+    public private(set) var actions: TableViewActions
     
     public var tableView: UITableView? {
         didSet {
@@ -20,8 +21,8 @@ public class TableDisplayManager {
     
     public init(_ tableView: UITableView? = nil) {
         self.model = TableViewModel()
+        self.actions = TableViewActions(model)
         self.tableView = tableView
-        
         configureTableView()
     }
     
@@ -31,6 +32,7 @@ public class TableDisplayManager {
         }
         
         tableView.dataSource = model
+        tableView.delegate = model
     }
     
     // MARK: - Private methods

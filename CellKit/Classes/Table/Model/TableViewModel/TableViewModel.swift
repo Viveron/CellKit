@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class TableViewModel: NSObject, TableModel, UITableViewDataSource {
+open class TableViewModel: NSObject, TableModel, UITableViewDataSource, UITableViewDelegate {
     
-    public private(set) var sections: [TableSectionObject]
+    open private(set) var sections: [TableSectionObject]
     
-    public var factory: TableSectionObjectFactory
+    open var factory: TableSectionObjectFactory
     
     // MARK: - Initializers
     
@@ -32,15 +32,15 @@ public class TableViewModel: NSObject, TableModel, UITableViewDataSource {
     
     // MARK: - UITableViewDataSource
     
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return numberOfSections()
     }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfCellsInSection(at: section)
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier: String
         if let reusable = reusableForCell(at: indexPath) {
             reuseIdentifier = tableView.registerCell(reusable)
@@ -56,27 +56,79 @@ public class TableViewModel: NSObject, TableModel, UITableViewDataSource {
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+    
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let reusable = reusableForSectionHeader(at: section) else {
+            return nil
+        }
+        let reuseIdentifier = tableView.registerSupplyView(reusable)
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseIdentifier)
+        if let configurable = view as? ConfigurableTableSupplyView, let model = modelForSectionHeader(at: section) {
+            configurable.configure(with: model)
+        }
+        
+        return view
+    }
+    
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let reusable = reusableForSectionFooter(at: section) else {
+            return nil
+        }
+        let reuseIdentifier = tableView.registerSupplyView(reusable)
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseIdentifier)
+        if let configurable = view as? ConfigurableTableSupplyView, let model = modelForSectionFooter(at: section) {
+            configurable.configure(with: model)
+        }
+        
+        return view
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.tableView(tableView, estimatedHeightForRowAt: indexPath)
+    }
+
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.tableView(tableView, estimatedHeightForHeaderInSection: section)
+    }
+
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return self.tableView(tableView, estimatedHeightForFooterInSection: section)
+    }
+
+    open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return height(modelForCell(at: indexPath), defaultValue: tableView.estimatedRowHeight)
+    }
+
+    open func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return height(modelForSectionHeader(at: section), defaultValue: tableView.estimatedSectionHeaderHeight)
+    }
+
+    open func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return height(modelForSectionFooter(at: section), defaultValue: tableView.estimatedSectionFooterHeight)
+    }
+    
     // MARK: - TableSectionObject mutations
     
     @discardableResult
-    public func append(sectionObject: TableSectionObject) -> Int {
+    open func append(sectionObject: TableSectionObject) -> Int {
         return append(sectionObjects: [sectionObject]).first!
     }
     
     @discardableResult
-    public func append(sectionObjects: [TableSectionObject]) -> [Int] {
+    open func append(sectionObjects: [TableSectionObject]) -> [Int] {
         let count = sections.count - 1
         sections.append(contentsOf: sectionObjects)
         return Array(count..<sections.count)
     }
     
     @discardableResult
-    public func insert(sectionObject: TableSectionObject, at index: Int) -> Int {
+    open func insert(sectionObject: TableSectionObject, at index: Int) -> Int {
         return insert(sectionObjects: [sectionObject], at: index).first!
     }
     
     @discardableResult
-    public func insert(sectionObjects: [TableSectionObject], at index: Int) -> [Int] {
+    open func insert(sectionObjects: [TableSectionObject], at index: Int) -> [Int] {
         let section = normalize(index, in: 0..<sections.count)
         sections.insert(contentsOf: sectionObjects, at: section)
         return Array(section..<(section + sectionObjects.count))
@@ -85,12 +137,12 @@ public class TableViewModel: NSObject, TableModel, UITableViewDataSource {
     // MARK: - TableCellObject mutations
     
     @discardableResult
-    public func append(cellObject: TableCellObject) -> IndexPath {
+    open func append(cellObject: TableCellObject) -> IndexPath {
         return append(cellObjects: [cellObject]).first!
     }
     
     @discardableResult
-    public func append(cellObjects: [TableCellObject]) -> [IndexPath] {
+    open func append(cellObjects: [TableCellObject]) -> [IndexPath] {
         let section: TableSectionObject
         let row: Int
         
@@ -111,12 +163,12 @@ public class TableViewModel: NSObject, TableModel, UITableViewDataSource {
     }
     
     @discardableResult
-    public func append(cellObject: TableCellObject, toSection index: Int) -> IndexPath {
+    open func append(cellObject: TableCellObject, toSection index: Int) -> IndexPath {
         return append(cellObjects: [cellObject], toSection: index).first!
     }
     
     @discardableResult
-    public func append(cellObjects: [TableCellObject], toSection index: Int) -> [IndexPath] {
+    open func append(cellObjects: [TableCellObject], toSection index: Int) -> [IndexPath] {
         let object = sections[index]
         let row = object.cellObjects.count
         
@@ -130,12 +182,12 @@ public class TableViewModel: NSObject, TableModel, UITableViewDataSource {
     }
     
     @discardableResult
-    public func insert(cellObject: TableCellObject, at indexPath: IndexPath) -> IndexPath {
+    open func insert(cellObject: TableCellObject, at indexPath: IndexPath) -> IndexPath {
         return insert(cellObjects: [cellObject], at: indexPath).first!
     }
     
     @discardableResult
-    public func insert(cellObjects: [TableCellObject], at indexPath: IndexPath) -> [IndexPath] {
+    open func insert(cellObjects: [TableCellObject], at indexPath: IndexPath) -> [IndexPath] {
         let object = sections[indexPath.section]
         let row = normalize(indexPath.row, in: 0..<object.cellObjects.count)
         
@@ -158,5 +210,12 @@ public class TableViewModel: NSObject, TableModel, UITableViewDataSource {
             return value
         }
         return value < range.lowerBound ? range.lowerBound : range.upperBound
+    }
+    
+    private func height(_ measurable: TableMeasurable?,
+                        defaultValue: CGFloat = UITableView.automaticDimension) -> CGFloat {
+        return measurable?.prefferedHeight
+            ?? measurable?.estimatedHeight
+            ?? defaultValue
     }
 }

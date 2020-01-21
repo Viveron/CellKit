@@ -33,6 +33,8 @@
 		0CC20B1E23D64AB200FD4E12 /* TableDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC20B1D23D64AB200FD4E12 /* TableDisplayManager.swift */; };
 		0CC20B2123D6695400FD4E12 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC20B2023D6695400FD4E12 /* UITableView+Extensions.swift */; };
 		0CC20B2623D6727000FD4E12 /* UITableViewCell+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC20B2523D6727000FD4E12 /* UITableViewCell+Constants.swift */; };
+		0CC20B2923D6C76000FD4E12 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC20B2823D6C76000FD4E12 /* Proxy.swift */; };
+		0CC20B2D23D6C7B900FD4E12 /* TableViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC20B2C23D6C7B900FD4E12 /* TableViewActions.swift */; };
 		2F46BF74FE5A6E6DE710C4AD491B0AB0 /* Pods-CellKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D0F2B36E65D68CDE3308DE07C3C860 /* Pods-CellKit_Example-dummy.m */; };
 		6280FCC12DF271AF8B68522237EE551F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		83375438EE5950A52D4A23960DC66FAF /* Pods-CellKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 25ADFECDB448FE75A8B63256F4579B6B /* Pods-CellKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -87,6 +89,8 @@
 		0CC20B1D23D64AB200FD4E12 /* TableDisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDisplayManager.swift; sourceTree = "<group>"; };
 		0CC20B2023D6695400FD4E12 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		0CC20B2523D6727000FD4E12 /* UITableViewCell+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Constants.swift"; sourceTree = "<group>"; };
+		0CC20B2823D6C76000FD4E12 /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
+		0CC20B2C23D6C7B900FD4E12 /* TableViewActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewActions.swift; sourceTree = "<group>"; };
 		169A8FB67A32DF92C6781C451B571DD1 /* Pods-CellKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CellKit_Tests.modulemap"; sourceTree = "<group>"; };
 		25757FCC84E648DA51EEEF45188D0D7C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		25ADFECDB448FE75A8B63256F4579B6B /* Pods-CellKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CellKit_Example-umbrella.h"; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 		0C27812723CFBA9700B1BCE0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0CC20B2723D6C75500FD4E12 /* Proxy */,
 				0C27813323CFBC1900B1BCE0 /* Model */,
 				0C27813023CFBBD000B1BCE0 /* Configurable */,
 				0C27812B23CFBB9800B1BCE0 /* Identifiable */,
@@ -198,6 +203,7 @@
 			children = (
 				0CC20B1C23D64A7B00FD4E12 /* DisplayManager */,
 				0C27815223CFC97800B1BCE0 /* Model */,
+				0CC20B2A23D6C79D00FD4E12 /* Actions */,
 				0C27816F23CFD78100B1BCE0 /* Configurable */,
 				0C27813A23CFC73E00B1BCE0 /* Measurable */,
 				0C27814223CFC88F00B1BCE0 /* SupplyView */,
@@ -354,6 +360,30 @@
 				0CC20B2523D6727000FD4E12 /* UITableViewCell+Constants.swift */,
 			);
 			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		0CC20B2723D6C75500FD4E12 /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				0CC20B2823D6C76000FD4E12 /* Proxy.swift */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
+		0CC20B2A23D6C79D00FD4E12 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				0CC20B2B23D6C7AE00FD4E12 /* TableViewActions */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		0CC20B2B23D6C7AE00FD4E12 /* TableViewActions */ = {
+			isa = PBXGroup;
+			children = (
+				0CC20B2C23D6C7B900FD4E12 /* TableViewActions.swift */,
+			);
+			path = TableViewActions;
 			sourceTree = "<group>";
 		};
 		1075BE3D8F7D3086C743BCA213D134B8 /* Pods-CellKit_Tests */ = {
@@ -639,6 +669,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C27813223CFBBDB00B1BCE0 /* ConfigurableView.swift in Sources */,
+				0CC20B2D23D6C7B900FD4E12 /* TableViewActions.swift in Sources */,
+				0CC20B2923D6C76000FD4E12 /* Proxy.swift in Sources */,
 				0C27813C23CFC74B00B1BCE0 /* TableMeasurable.swift in Sources */,
 				0C27815423CFC98F00B1BCE0 /* TableModel.swift in Sources */,
 				0C27812A23CFBB3D00B1BCE0 /* Reusable.swift in Sources */,
