@@ -19,9 +19,6 @@ class ViewController: UIViewController {
         
         view.addSubview(tableView)
         
-        // remove empty rows
-        tableView.tableFooterView = UIView()
-        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -48,12 +45,10 @@ class DisplayManager: TableDisplayManager {
         let headerObject = InfoSupplyViewObject(model: .init(title: title))
         let sectionObject = TableViewSection(headerObject: headerObject)
         
-        let indexes = model.insert(sectionObjects: [sectionObject], at: 0)
-        tableView?.insertSections(IndexSet(indexes), with: .top)
+        append(sectionObject: sectionObject, with: .left)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            let indexPaths = self.model.insert(cellObjects: cellObjcts, at: IndexPath(row: 0, section: 0))
-            self.tableView?.insertRows(at: indexPaths, with: .bottom)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.append(cellObjects: cellObjcts, with: .right)
         }
     }
 }

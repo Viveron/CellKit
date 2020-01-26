@@ -19,13 +19,13 @@ open class TableDisplayManager {
         }
     }
     
-    public init(_ tableView: UITableView? = nil) {
-        self.model = TableViewModel()
-        self.actions = TableViewActions()
-        self.tableView = tableView
+    public init(model: TableViewModel = .init(),
+                actions: TableViewActions = .init()) {
+        
+        self.model = model
+        self.actions = actions
         
         actions.add(model)
-        configureTableView()
     }
     
     open func configureTableView() {
@@ -35,5 +35,85 @@ open class TableDisplayManager {
         
         tableView.dataSource = model
         tableView.delegate = actions
+        
+        // Avoid empty rows for empty model state
+        if tableView.tableFooterView == nil {
+            tableView.tableFooterView = UIView()
+        }
+    }
+    
+    // MARK: - TableSectionObject mutations
+    
+    open func append(sectionObject: TableSectionObject,
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        append(sectionObjects: [sectionObject], with: animation)
+    }
+    
+    open func append(sectionObjects: [TableSectionObject],
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        let indexes = model.append(sectionObjects: sectionObjects)
+        tableView?.insertSections(IndexSet(indexes), with: animation)
+    }
+    
+    open func insert(sectionObject: TableSectionObject,
+                     at index: Int,
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        insert(sectionObjects: [sectionObject], at: index, with: animation)
+    }
+    
+    open func insert(sectionObjects: [TableSectionObject],
+                     at index: Int,
+                     with animation: UITableView.RowAnimation = .none)  {
+        
+        let indexes = model.insert(sectionObjects: sectionObjects, at: index)
+        tableView?.insertSections(IndexSet(indexes), with: animation)
+    }
+    
+    // MARK: - TableCellObject mutations
+    
+    open func append(cellObject: TableCellObject,
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        append(cellObjects: [cellObject], with: animation)
+    }
+    
+    open func append(cellObjects: [TableCellObject],
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        let indexPaths = model.append(cellObjects: cellObjects)
+        tableView?.insertRows(at: indexPaths, with: animation)
+    }
+    
+    open func append(cellObject: TableCellObject,
+                     toSection index: Int,
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        append(cellObjects: [cellObject], toSection: index, with: animation)
+    }
+    
+    open func append(cellObjects: [TableCellObject],
+                     toSection index: Int,
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        let indexPaths = model.append(cellObjects: cellObjects, toSection: index)
+        tableView?.insertRows(at: indexPaths, with: animation)
+    }
+    
+    open func insert(cellObject: TableCellObject,
+                     at indexPath: IndexPath,
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        insert(cellObjects: [cellObject], at: indexPath, with: animation)
+    }
+    
+    open func insert(cellObjects: [TableCellObject],
+                     at indexPath: IndexPath,
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        let indexPaths = model.insert(cellObjects: cellObjects, at: indexPath)
+        tableView?.insertRows(at: indexPaths, with: animation)
     }
 }
