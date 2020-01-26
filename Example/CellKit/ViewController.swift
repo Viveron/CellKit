@@ -50,6 +50,10 @@ class DisplayManager: TableDisplayManager {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.append(cellObjects: cellObjcts, with: .right)
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.remove(sectionObjectAt: 0, with: .right)
+        }
     }
 }
 

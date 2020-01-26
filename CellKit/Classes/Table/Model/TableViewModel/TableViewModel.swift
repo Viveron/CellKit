@@ -134,6 +134,13 @@ open class TableViewModel: NSObject, TableModel, UITableViewDataSource, UITableV
         return Array(section..<(section + sectionObjects.count))
     }
     
+    @discardableResult
+    open func remove(sectionObjectAt index: Int) -> Int {
+        let section = normalize(index, in: 0..<sections.count)
+        sections.remove(at: section)
+        return section
+    }
+    
     // MARK: - TableCellObject mutations
     
     @discardableResult
@@ -194,6 +201,18 @@ open class TableViewModel: NSObject, TableModel, UITableViewDataSource, UITableV
             IndexPath(row: row + $0,
                       section: indexPath.section)
         }
+    }
+    
+    @discardableResult
+    open func remove(cellObjectAt indexPath: IndexPath) -> IndexPath {
+        let object = sections[indexPath.section]
+        
+        var cells = object.cellObjects
+        cells.remove(at: indexPath.row)
+        
+        sections[indexPath.section] = factory.change(in: object,
+                                                     cellObjects: cells)
+        return indexPath
     }
     
     // MARK: - Heplpers

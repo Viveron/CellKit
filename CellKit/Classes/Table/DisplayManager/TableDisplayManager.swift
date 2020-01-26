@@ -72,6 +72,13 @@ open class TableDisplayManager {
         tableView?.insertSections(IndexSet(indexes), with: animation)
     }
     
+    open func remove(sectionObjectAt index: Int,
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        let index = model.remove(sectionObjectAt: index)
+        tableView?.deleteSections(IndexSet([index]), with: animation)
+    }
+    
     // MARK: - TableCellObject mutations
     
     open func append(cellObject: TableCellObject,
@@ -115,5 +122,12 @@ open class TableDisplayManager {
         
         let indexPaths = model.insert(cellObjects: cellObjects, at: indexPath)
         tableView?.insertRows(at: indexPaths, with: animation)
+    }
+    
+    open func remove(cellObjectAt indexPath: IndexPath,
+                     with animation: UITableView.RowAnimation = .none) {
+        
+        let indexPath = model.remove(cellObjectAt: indexPath)
+        tableView?.deleteRows(at: [indexPath], with: animation)
     }
 }
