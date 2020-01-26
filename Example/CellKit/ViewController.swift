@@ -19,7 +19,8 @@ class ViewController: UIViewController {
         
         view.addSubview(tableView)
         
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        // remove empty rows
+        tableView.tableFooterView = UIView()
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
@@ -30,22 +31,30 @@ class ViewController: UIViewController {
         displayManager.tableView = tableView
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        displayManager.reload(witn: 5)
+        displayManager.reload(witn: 5, title: "It's works!")
     }
 }
 
 class DisplayManager: TableDisplayManager {
     
-    func reload(witn numberOfCells: Int) {
+    func reload(witn numberOfCells: Int, title: String) {
         let cellObjcts = (0..<numberOfCells).map { _ in
             InfoTableViewCellObject(model: .init())
         }
         
-        model.append(cellObjects: cellObjcts)
-        tableView?.reloadData()
+        let headerObject = InfoSupplyViewObject(model: .init(title: title))
+        let sectionObject = TableViewSection(headerObject: headerObject)
+        
+        let indexes = model.insert(sectionObjects: [sectionObject], at: 0)
+        tableView?.insertSections(IndexSet(indexes), with: .top)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            let indexPaths = self.model.insert(cellObjects: cellObjcts, at: IndexPath(row: 0, section: 0))
+            self.tableView?.insertRows(at: indexPaths, with: .bottom)
+        }
     }
 }
 
@@ -61,16 +70,14 @@ class InfoTableViewCell: TableViewCell<InfoTableViewCellModel> {
     private let titleLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        
-        titleLabel.numberOfLines = 0
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 50).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -50).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -50).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
     }
     
     required init?(coder: NSCoder) {
@@ -83,5 +90,44 @@ class InfoTableViewCell: TableViewCell<InfoTableViewCellModel> {
         super.configure(with: cellModel)
         
         titleLabel.text = cellModel.id
+    }
+}
+
+typealias InfoSupplyViewObject = TableViewSupplyViewObject<InfoSupplyView, InfoSupplyViewModel>
+
+class InfoSupplyViewModel: TableSupplyViewModel {
+    
+    let title: String?
+    
+    init(title: String? = nil) {
+        self.title = title
+    }
+}
+
+class InfoSupplyView: TableViewSupplyView<InfoSupplyViewModel> {
+    
+    private let titleLabel = UILabel()
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        
+        titleLabel.numberOfLines = 0
+        
+        contentView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override func configure(with viewModel: InfoSupplyViewModel) {
+        super.configure(with: viewModel)
+        
+        titleLabel.text = viewModel.title ?? "empty"
     }
 }

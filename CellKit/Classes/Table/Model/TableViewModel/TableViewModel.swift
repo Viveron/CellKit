@@ -85,27 +85,27 @@ open class TableViewModel: NSObject, TableModel, UITableViewDataSource, UITableV
     }
     
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.tableView(tableView, estimatedHeightForRowAt: indexPath)
+        return prefferedHeight(modelForCell(at: indexPath), defaultValue: tableView.rowHeight)
     }
 
     open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.tableView(tableView, estimatedHeightForHeaderInSection: section)
+        return prefferedHeight(modelForSectionHeader(at: section), defaultValue: tableView.sectionHeaderHeight)
     }
 
     open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return self.tableView(tableView, estimatedHeightForFooterInSection: section)
+        return prefferedHeight(modelForSectionFooter(at: section), defaultValue: tableView.sectionFooterHeight)
     }
 
     open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return height(modelForCell(at: indexPath), defaultValue: tableView.estimatedRowHeight)
+        return estimatedHeight(modelForCell(at: indexPath), defaultValue: tableView.estimatedRowHeight)
     }
 
     open func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return height(modelForSectionHeader(at: section), defaultValue: tableView.estimatedSectionHeaderHeight)
+        return estimatedHeight(modelForSectionHeader(at: section), defaultValue: tableView.estimatedSectionHeaderHeight)
     }
 
     open func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        return height(modelForSectionFooter(at: section), defaultValue: tableView.estimatedSectionFooterHeight)
+        return estimatedHeight(modelForSectionFooter(at: section), defaultValue: tableView.estimatedSectionFooterHeight)
     }
     
     // MARK: - TableSectionObject mutations
@@ -117,7 +117,7 @@ open class TableViewModel: NSObject, TableModel, UITableViewDataSource, UITableV
     
     @discardableResult
     open func append(sectionObjects: [TableSectionObject]) -> [Int] {
-        let count = sections.count - 1
+        let count = sections.count
         sections.append(contentsOf: sectionObjects)
         return Array(count..<sections.count)
     }
@@ -143,22 +143,15 @@ open class TableViewModel: NSObject, TableModel, UITableViewDataSource, UITableV
     
     @discardableResult
     open func append(cellObjects: [TableCellObject]) -> [IndexPath] {
-        let section: TableSectionObject
-        let row: Int
-        
-        if let object = sections.last {
-            row = object.cellObjects.count
-            section = factory.change(in: object,
-                                     cellObjects: object.cellObjects + cellObjects)
-        } else {
-            row = 0
-            section = factory.makeSectionObject(cellObjects: cellObjects)
+        guard sections.isEmpty else {
+            return append(cellObjects: cellObjects, toSection: sections.count - 1)
         }
-        sections.append(section)
+        
+        sections = [factory.makeSectionObject(cellObjects: cellObjects)]
         
         return (0..<cellObjects.count).map {
-            IndexPath(row: row + $0,
-                      section: sections.count - 1)
+            IndexPath(row: $0,
+                      section: 0)
         }
     }
     
@@ -212,10 +205,11 @@ open class TableViewModel: NSObject, TableModel, UITableViewDataSource, UITableV
         return value < range.lowerBound ? range.lowerBound : range.upperBound
     }
     
-    private func height(_ measurable: TableMeasurable?,
-                        defaultValue: CGFloat = UITableView.automaticDimension) -> CGFloat {
-        return measurable?.prefferedHeight
-            ?? measurable?.estimatedHeight
-            ?? defaultValue
+    private func prefferedHeight(_ measurable: TableMeasurable?, defaultValue: CGFloat) -> CGFloat {
+        return measurable?.prefferedHeight ?? defaultValue
+    }
+    
+    private func estimatedHeight(_ measurable: TableMeasurable?, defaultValue: CGFloat) -> CGFloat {
+        return measurable?.estimatedHeight ?? defaultValue
     }
 }

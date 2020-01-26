@@ -23,7 +23,7 @@ public extension TableSupplyViewModel {
 // MARK: - TableMeasurable
 public extension TableSupplyViewModel {
     
-    var prefferedHeight: CGFloat? {
+    var estimatedHeight: CGFloat? {
         return UITableView.zeroDimension
     }
 }
