@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class TableViewCell<ModelType>: UITableViewCell, ConfigurableTableCell where ModelType: TableCellModel {
+open class TableViewCell<ModelType>: UITableViewCell, ConfigurableTableCell where ModelType: TableCellModel {
     
     // MARK: - Configurable
     
-    public func configure(with cellModel: ModelType) {
+    open func configure(with cellModel: ModelType) {
         // empty for subclasses overriding
     }
 }

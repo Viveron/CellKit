@@ -8,12 +8,12 @@
 
 import UIKit
 
-public class TableDisplayManager {
+open class TableDisplayManager {
     
-    public private(set) var model: TableViewModel
-    public private(set) var actions: TableViewActions
+    open private(set) var model: TableViewModel
+    open private(set) var actions: TableViewActions
     
-    public var tableView: UITableView? {
+    open var tableView: UITableView? {
         didSet {
             configureTableView()
         }
@@ -21,19 +21,19 @@ public class TableDisplayManager {
     
     public init(_ tableView: UITableView? = nil) {
         self.model = TableViewModel()
-        self.actions = TableViewActions(model)
+        self.actions = TableViewActions()
         self.tableView = tableView
+        
+        actions.add(model)
         configureTableView()
     }
     
-    public func configureTableView() {
+    open func configureTableView() {
         guard let tableView = tableView else {
             return
         }
         
         tableView.dataSource = model
-        tableView.delegate = model
+        tableView.delegate = actions
     }
-    
-    // MARK: - Private methods
 }

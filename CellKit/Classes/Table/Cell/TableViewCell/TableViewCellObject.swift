@@ -8,20 +8,20 @@
 
 import Foundation
 
-public class TableViewCellObject<CellType, ModelType>: TableCellObject where CellType: TableViewCell<ModelType> {
+open class TableViewCellObject<CellType, ModelType>: TableCellObject where CellType: TableViewCell<ModelType> {
     
-    public var reuseClass: AnyClass {
+    open var reuseClass: AnyClass {
         return CellType.self
     }
     
-    public var cellModel: TableCellModel {
+    open var cellModel: TableCellModel {
         return model
     }
     
     // Object' specific model
     public let model: ModelType
     
-    public required init(model: ModelType) {
+    public init(model: ModelType) {
         self.model = model
     }
 }

@@ -8,16 +8,10 @@
 
 import UIKit
 
-open class TableViewActions: NSObject, UITableViewDelegate {
+open class TableViewActions: Proxy<UITableViewDelegate>, TableActions, UITableViewDelegate {
     
-    private let proxy = Proxy()
-    
-    init(_ original: UITableViewDelegate? = nil) {
-        super.init()
-        
-        if let target = original {
-            proxy.add(target)
-        }
+    public init() {
+        super.init(UITableViewDelegate.self)
     }
     
     // MARK: - UITableViewDelegate
@@ -30,5 +24,23 @@ open class TableViewActions: NSObject, UITableViewDelegate {
             return
         }
         
+        self.tableModel(tableModel, didSelect: cellModel, at: indexPath, reusable: reusable)
     }
+    
+    // MARK: - TableActions
+    
+    public func tableModel(_ tableModel: TableModel,
+                           didSelect cellModel: TableCellModel,
+                           at indexPath: IndexPath,
+                           reusable: Reusable) {
+        
+    }
+}
+
+public protocol TableActions {
+    
+    func tableModel(_ tableModel: TableModel,
+                    didSelect cellModel: TableCellModel,
+                    at indexPath: IndexPath,
+                    reusable: Reusable)
 }
