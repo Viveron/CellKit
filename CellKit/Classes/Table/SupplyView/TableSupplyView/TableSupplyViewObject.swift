@@ -1,5 +1,5 @@
 //
-//  TableSypplyViewObject.swift
+//  TableSupplyViewObject.swift
 //  CellKit
 //
 //  Created by Victor Shabanov on 16.01.2020.
@@ -9,13 +9,13 @@
 import Foundation
 
 // Object which describes header or footer view of table's section
-public protocol TableSypplyViewObject: Reusable, Identifiable {
+public protocol TableSupplyViewObject: Reusable, Identifiable {
     
-    var viewModel: TableSypplyViewModel { get }
+    var viewModel: TableSupplyViewModel { get }
 }
 
 // MARK: - Identifiable
-public extension TableSypplyViewObject {
+public extension TableSupplyViewObject {
     
     var id: String {
         return viewModel.id

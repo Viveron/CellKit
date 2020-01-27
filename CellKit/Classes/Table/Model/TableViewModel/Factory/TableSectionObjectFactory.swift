@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class TableSectionObjectFactory {
+open class TableSectionObjectFactory {
     
-    public func makeSectionObject(id: String = UUID().uuidString,
-                                  headerObject: TableSypplyViewObject? = nil,
-                                  footerObject: TableSypplyViewObject? = nil,
-                                  cellObjects: [TableCellObject] = []) -> TableSectionObject {
+    open func makeSectionObject(id: String = UUID().uuidString,
+                                headerObject: TableSupplyViewObject? = nil,
+                                footerObject: TableSupplyViewObject? = nil,
+                                cellObjects: [TableCellObject] = []) -> TableSectionObject {
         
         return TableViewSection(id: id,
                                 headerObject: headerObject,
@@ -23,8 +23,8 @@ public class TableSectionObjectFactory {
     
     // MARK: - Changes of object
     
-    public func change(in sectionObject: TableSectionObject,
-                       headerObject: TableSypplyViewObject? = nil) -> TableSectionObject {
+    open func change(in sectionObject: TableSectionObject,
+                     headerObject: TableSupplyViewObject? = nil) -> TableSectionObject {
         
         return TableViewSection(id: sectionObject.id,
                                 headerObject: headerObject,
@@ -32,8 +32,8 @@ public class TableSectionObjectFactory {
                                 cellObjects: sectionObject.cellObjects)
     }
     
-    public func change(in sectionObject: TableSectionObject,
-                       footerObject: TableSypplyViewObject? = nil) -> TableSectionObject {
+    open func change(in sectionObject: TableSectionObject,
+                     footerObject: TableSupplyViewObject? = nil) -> TableSectionObject {
         
         return TableViewSection(id: sectionObject.id,
                                 headerObject: sectionObject.headerObject,
@@ -41,8 +41,8 @@ public class TableSectionObjectFactory {
                                 cellObjects: sectionObject.cellObjects)
     }
     
-    public func change(in sectionObject: TableSectionObject,
-                       cellObjects: [TableCellObject] = []) -> TableSectionObject {
+    open func change(in sectionObject: TableSectionObject,
+                     cellObjects: [TableCellObject] = []) -> TableSectionObject {
         
         return TableViewSection(id: sectionObject.id,
                                 headerObject: sectionObject.headerObject,

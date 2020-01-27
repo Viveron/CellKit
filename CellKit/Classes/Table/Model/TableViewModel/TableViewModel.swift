@@ -6,13 +6,13 @@
 //  Copyright © 2020 Victor Shabanov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-public class TableViewModel: TableModel {
+open class TableViewModel: NSObject, TableModel, UITableViewDataSource, UITableViewDelegate {
     
-    public private(set) var sections: [TableSectionObject]
+    open private(set) var sections: [TableSectionObject]
     
-    public var factory: TableSectionObjectFactory
+    open var factory: TableSectionObjectFactory
     
     // MARK: - Initializers
     
@@ -27,69 +27,148 @@ public class TableViewModel: TableModel {
     public init(_ sections: [TableSectionObject] = []) {
         self.sections = sections
         self.factory = .init()
+        super.init()
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    open func numberOfSections(in tableView: UITableView) -> Int {
+        return numberOfSections()
+    }
+    
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfCellsInSection(at: section)
+    }
+    
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let reuseIdentifier: String
+        if let reusable = reusableForCell(at: indexPath) {
+            reuseIdentifier = tableView.registerCell(reusable)
+        } else {
+            reuseIdentifier = UITableViewCell.unavailableReuseIdentifier
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        if let configurable = cell as? ConfigurableTableCell, let model = modelForCell(at: indexPath) {
+            configurable.configure(with: model)
+        }
+        
+        return cell
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let reusable = reusableForSectionHeader(at: section) else {
+            return nil
+        }
+        let reuseIdentifier = tableView.registerSupplyView(reusable)
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseIdentifier)
+        if let configurable = view as? ConfigurableTableSupplyView, let model = modelForSectionHeader(at: section) {
+            configurable.configure(with: model)
+        }
+        
+        return view
+    }
+    
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let reusable = reusableForSectionFooter(at: section) else {
+            return nil
+        }
+        let reuseIdentifier = tableView.registerSupplyView(reusable)
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: reuseIdentifier)
+        if let configurable = view as? ConfigurableTableSupplyView, let model = modelForSectionFooter(at: section) {
+            configurable.configure(with: model)
+        }
+        
+        return view
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return prefferedHeight(modelForCell(at: indexPath), defaultValue: tableView.rowHeight)
+    }
+
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return prefferedHeight(modelForSectionHeader(at: section), defaultValue: tableView.sectionHeaderHeight)
+    }
+
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return prefferedHeight(modelForSectionFooter(at: section), defaultValue: tableView.sectionFooterHeight)
+    }
+
+    open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return estimatedHeight(modelForCell(at: indexPath), defaultValue: tableView.estimatedRowHeight)
+    }
+
+    open func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return estimatedHeight(modelForSectionHeader(at: section), defaultValue: tableView.estimatedSectionHeaderHeight)
+    }
+
+    open func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return estimatedHeight(modelForSectionFooter(at: section), defaultValue: tableView.estimatedSectionFooterHeight)
     }
     
     // MARK: - TableSectionObject mutations
     
     @discardableResult
-    public func append(sectionObject: TableSectionObject) -> Int {
+    open func append(sectionObject: TableSectionObject) -> Int {
         return append(sectionObjects: [sectionObject]).first!
     }
     
     @discardableResult
-    public func append(sectionObjects: [TableSectionObject]) -> [Int] {
-        let count = sections.count - 1
+    open func append(sectionObjects: [TableSectionObject]) -> [Int] {
+        let count = sections.count
         sections.append(contentsOf: sectionObjects)
         return Array(count..<sections.count)
     }
     
     @discardableResult
-    public func insert(sectionObject: TableSectionObject, at index: Int) -> Int {
+    open func insert(sectionObject: TableSectionObject, at index: Int) -> Int {
         return insert(sectionObjects: [sectionObject], at: index).first!
     }
     
     @discardableResult
-    public func insert(sectionObjects: [TableSectionObject], at index: Int) -> [Int] {
+    open func insert(sectionObjects: [TableSectionObject], at index: Int) -> [Int] {
         let section = normalize(index, in: 0..<sections.count)
         sections.insert(contentsOf: sectionObjects, at: section)
         return Array(section..<(section + sectionObjects.count))
     }
     
+    @discardableResult
+    open func remove(sectionObjectAt index: Int) -> Int {
+        let section = normalize(index, in: 0..<sections.count)
+        sections.remove(at: section)
+        return section
+    }
+    
     // MARK: - TableCellObject mutations
     
     @discardableResult
-    public func append(cellObject: TableCellObject) -> IndexPath {
+    open func append(cellObject: TableCellObject) -> IndexPath {
         return append(cellObjects: [cellObject]).first!
     }
     
     @discardableResult
-    public func append(cellObjects: [TableCellObject]) -> [IndexPath] {
-        let section: TableSectionObject
-        let row: Int
-        
-        if let object = sections.last {
-            row = object.cellObjects.count
-            section = factory.change(in: object,
-                                     cellObjects: object.cellObjects + cellObjects)
-        } else {
-            row = 0
-            section = factory.makeSectionObject(cellObjects: cellObjects)
+    open func append(cellObjects: [TableCellObject]) -> [IndexPath] {
+        guard sections.isEmpty else {
+            return append(cellObjects: cellObjects, toSection: sections.count - 1)
         }
-        sections.append(section)
+        
+        sections = [factory.makeSectionObject(cellObjects: cellObjects)]
         
         return (0..<cellObjects.count).map {
-            IndexPath(row: row + $0,
-                      section: sections.count - 1)
+            IndexPath(row: $0,
+                      section: 0)
         }
     }
     
     @discardableResult
-    public func append(cellObject: TableCellObject, toSection index: Int) -> IndexPath {
+    open func append(cellObject: TableCellObject, toSection index: Int) -> IndexPath {
         return append(cellObjects: [cellObject], toSection: index).first!
     }
     
     @discardableResult
-    public func append(cellObjects: [TableCellObject], toSection index: Int) -> [IndexPath] {
+    open func append(cellObjects: [TableCellObject], toSection index: Int) -> [IndexPath] {
         let object = sections[index]
         let row = object.cellObjects.count
         
@@ -103,12 +182,12 @@ public class TableViewModel: TableModel {
     }
     
     @discardableResult
-    public func insert(cellObject: TableCellObject, at indexPath: IndexPath) -> IndexPath {
+    open func insert(cellObject: TableCellObject, at indexPath: IndexPath) -> IndexPath {
         return insert(cellObjects: [cellObject], at: indexPath).first!
     }
     
     @discardableResult
-    public func insert(cellObjects: [TableCellObject], at indexPath: IndexPath) -> [IndexPath] {
+    open func insert(cellObjects: [TableCellObject], at indexPath: IndexPath) -> [IndexPath] {
         let object = sections[indexPath.section]
         let row = normalize(indexPath.row, in: 0..<object.cellObjects.count)
         
@@ -124,6 +203,18 @@ public class TableViewModel: TableModel {
         }
     }
     
+    @discardableResult
+    open func remove(cellObjectAt indexPath: IndexPath) -> IndexPath {
+        let object = sections[indexPath.section]
+        
+        var cells = object.cellObjects
+        cells.remove(at: indexPath.row)
+        
+        sections[indexPath.section] = factory.change(in: object,
+                                                     cellObjects: cells)
+        return indexPath
+    }
+    
     // MARK: - Heplpers
     
     private func normalize<T>(_ value: T, in range: Range<T>) -> T {
@@ -131,5 +222,13 @@ public class TableViewModel: TableModel {
             return value
         }
         return value < range.lowerBound ? range.lowerBound : range.upperBound
+    }
+    
+    private func prefferedHeight(_ measurable: TableMeasurable?, defaultValue: CGFloat) -> CGFloat {
+        return measurable?.prefferedHeight ?? defaultValue
+    }
+    
+    private func estimatedHeight(_ measurable: TableMeasurable?, defaultValue: CGFloat) -> CGFloat {
+        return measurable?.estimatedHeight ?? defaultValue
     }
 }

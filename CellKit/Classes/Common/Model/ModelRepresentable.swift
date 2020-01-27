@@ -14,9 +14,9 @@ public protocol ModelRepresentable {
 
     func numberOfCellsInSection(at index: Int) -> Int
     
-    func reuseIdentifierForSectionHeader(at index: Int) -> String?
+    func reusableForSectionHeader(at index: Int) -> Reusable?
     
-    func reuseIdentifierForSectionFooter(at index: Int) -> String?
+    func reusableForSectionFooter(at index: Int) -> Reusable?
     
-    func reuseIdentifierForCell(at indexPath: IndexPath) -> String
+    func reusableForCell(at indexPath: IndexPath) -> Reusable?
 }

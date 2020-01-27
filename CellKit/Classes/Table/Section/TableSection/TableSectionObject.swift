@@ -11,7 +11,7 @@ import Foundation
 // Object which describes section representation
 public protocol TableSectionObject: Identifiable {
     
-    var headerObject: TableSypplyViewObject? { get }
-    var footerObject: TableSypplyViewObject? { get }
+    var headerObject: TableSupplyViewObject? { get }
+    var footerObject: TableSupplyViewObject? { get }
     var cellObjects: [TableCellObject] { get }
 }
