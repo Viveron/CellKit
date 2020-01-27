@@ -51,9 +51,11 @@ class DisplayManager: TableDisplayManager {
             self.append(cellObjects: cellObjcts, with: .right)
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.remove(sectionObjectAt: 0, with: .right)
+        let action = TableCellAction<InfoTableViewCellModel> { model, IndexPath in
+            self.remove(cellObjectAt: IndexPath)
         }
+        
+        actions.attach(to: InfoTableViewCellObject.self, tapAction: action)
     }
 }
 
