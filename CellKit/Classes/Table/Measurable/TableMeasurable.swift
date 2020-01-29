@@ -11,7 +11,6 @@ import CoreGraphics
 public protocol TableMeasurable {
     
     var prefferedHeight: CGFloat? { get }
-    
     var estimatedHeight: CGFloat? { get }
 }
 

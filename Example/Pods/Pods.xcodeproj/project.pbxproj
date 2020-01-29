@@ -12,6 +12,14 @@
 		0C58477D23DE11E800249096 /* TableViewSupplyViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C58477C23DE11E800249096 /* TableViewSupplyViewObject.swift */; };
 		0C58478323DE716200249096 /* CellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C58478223DE716200249096 /* CellAction.swift */; };
 		0C58478623DE71BF00249096 /* TableCellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C58478523DE71BF00249096 /* TableCellAction.swift */; };
+		0C97511F23E2346700928193 /* CollectionMeasurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C97511E23E2346700928193 /* CollectionMeasurable.swift */; };
+		0C97512123E234EE00928193 /* CollectionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C97512023E234EE00928193 /* CollectionCellModel.swift */; };
+		0C97512323E2350100928193 /* CollectionCellObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C97512223E2350100928193 /* CollectionCellObject.swift */; };
+		0C97512623E2360800928193 /* ConfigurableCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C97512523E2360800928193 /* ConfigurableCollectionCell.swift */; };
+		0C97512823E2363200928193 /* ConfigurableCollectionSupplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C97512723E2363200928193 /* ConfigurableCollectionSupplyView.swift */; };
+		0C97512C23E236D200928193 /* CollectionSupplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C97512B23E236D200928193 /* CollectionSupplyViewModel.swift */; };
+		0C97512E23E236E200928193 /* CollectionSupplyViewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C97512D23E236E200928193 /* CollectionSupplyViewObject.swift */; };
+		0C97513223E237BC00928193 /* CollectionSectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C97513123E237BC00928193 /* CollectionSectionObject.swift */; };
 		0FB9A83A4748AA8D57F7F8CA4921DFD6 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8CDE013BDF23F594F36DDAE782C29A /* Reusable.swift */; };
 		0FE48124CC74A2030555235DAC7C06F5 /* CellKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 568E0B201C51A41AFA3BF8844BE7D26C /* CellKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16FDD9FD97EFC4726FDC99A53FB81EBA /* UITableViewCell+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635FF990E91E1275FA66FDC2842BDC1 /* UITableViewCell+Constants.swift */; };
@@ -74,6 +82,14 @@
 		0C58477C23DE11E800249096 /* TableViewSupplyViewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSupplyViewObject.swift; sourceTree = "<group>"; };
 		0C58478223DE716200249096 /* CellAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAction.swift; sourceTree = "<group>"; };
 		0C58478523DE71BF00249096 /* TableCellAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellAction.swift; sourceTree = "<group>"; };
+		0C97511E23E2346700928193 /* CollectionMeasurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionMeasurable.swift; sourceTree = "<group>"; };
+		0C97512023E234EE00928193 /* CollectionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellModel.swift; sourceTree = "<group>"; };
+		0C97512223E2350100928193 /* CollectionCellObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellObject.swift; sourceTree = "<group>"; };
+		0C97512523E2360800928193 /* ConfigurableCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCollectionCell.swift; sourceTree = "<group>"; };
+		0C97512723E2363200928193 /* ConfigurableCollectionSupplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCollectionSupplyView.swift; sourceTree = "<group>"; };
+		0C97512B23E236D200928193 /* CollectionSupplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSupplyViewModel.swift; sourceTree = "<group>"; };
+		0C97512D23E236E200928193 /* CollectionSupplyViewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSupplyViewObject.swift; sourceTree = "<group>"; };
+		0C97513123E237BC00928193 /* CollectionSectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSectionObject.swift; sourceTree = "<group>"; };
 		12FA5C93E983B50C9E00C08081626033 /* CellKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CellKit-prefix.pch"; sourceTree = "<group>"; };
 		16916C0DD9A177C05D4E2858B6999241 /* ConfigurableTableSupplyView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConfigurableTableSupplyView.swift; sourceTree = "<group>"; };
 		169A8FB67A32DF92C6781C451B571DD1 /* Pods-CellKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CellKit_Tests.modulemap"; sourceTree = "<group>"; };
@@ -199,6 +215,86 @@
 				0C58478523DE71BF00249096 /* TableCellAction.swift */,
 			);
 			path = TableCellAction;
+			sourceTree = "<group>";
+		};
+		0C97511823E2322800928193 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				0C97512423E235F800928193 /* Configurable */,
+				0C97511B23E2341500928193 /* Measurable */,
+				0C97512923E2365700928193 /* SupplyView */,
+				0C97512F23E2378C00928193 /* Section */,
+				0C97511923E2329500928193 /* Cell */,
+			);
+			name = Collection;
+			path = CellKit/Classes/Collection;
+			sourceTree = "<group>";
+		};
+		0C97511923E2329500928193 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0C97511A23E232AD00928193 /* CollectionCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0C97511A23E232AD00928193 /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C97512023E234EE00928193 /* CollectionCellModel.swift */,
+				0C97512223E2350100928193 /* CollectionCellObject.swift */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		0C97511B23E2341500928193 /* Measurable */ = {
+			isa = PBXGroup;
+			children = (
+				0C97511E23E2346700928193 /* CollectionMeasurable.swift */,
+			);
+			path = Measurable;
+			sourceTree = "<group>";
+		};
+		0C97512423E235F800928193 /* Configurable */ = {
+			isa = PBXGroup;
+			children = (
+				0C97512523E2360800928193 /* ConfigurableCollectionCell.swift */,
+				0C97512723E2363200928193 /* ConfigurableCollectionSupplyView.swift */,
+			);
+			path = Configurable;
+			sourceTree = "<group>";
+		};
+		0C97512923E2365700928193 /* SupplyView */ = {
+			isa = PBXGroup;
+			children = (
+				0C97512A23E236B000928193 /* CollectionSupplyView */,
+			);
+			path = SupplyView;
+			sourceTree = "<group>";
+		};
+		0C97512A23E236B000928193 /* CollectionSupplyView */ = {
+			isa = PBXGroup;
+			children = (
+				0C97512B23E236D200928193 /* CollectionSupplyViewModel.swift */,
+				0C97512D23E236E200928193 /* CollectionSupplyViewObject.swift */,
+			);
+			path = CollectionSupplyView;
+			sourceTree = "<group>";
+		};
+		0C97512F23E2378C00928193 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				0C97513023E2379800928193 /* CollectionSection */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		0C97513023E2379800928193 /* CollectionSection */ = {
+			isa = PBXGroup;
+			children = (
+				0C97513123E237BC00928193 /* CollectionSectionObject.swift */,
+			);
+			path = CollectionSection;
 			sourceTree = "<group>";
 		};
 		1075BE3D8F7D3086C743BCA213D134B8 /* Pods-CellKit_Tests */ = {
@@ -332,9 +428,10 @@
 			children = (
 				BF0DD594EB58439855A13E50D662DBBF /* Common */,
 				B3BA7A20FF33108EF47F8123518E6E5F /* Extensions */,
+				DAC95D5CA6DB78D6075A38C3E9F83DA0 /* Table */,
+				0C97511823E2322800928193 /* Collection */,
 				441FC6B531DFA37588B3E7AB1C5ED204 /* Pod */,
 				26DB7F9D163C10CDD78A712BA881648E /* Support Files */,
-				DAC95D5CA6DB78D6075A38C3E9F83DA0 /* Table */,
 			);
 			name = CellKit;
 			path = ../..;
@@ -515,14 +612,14 @@
 		DAC95D5CA6DB78D6075A38C3E9F83DA0 /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				8961D7142F6E92A49535EAF6F34554C8 /* Actions */,
-				9FB52931BE6D961DD5262780D0C162FB /* Cell */,
-				F47459FFB0B3D8D89FAA2DA25D1097CA /* Configurable */,
-				FB37DC69BAF6DACB7A5234FC324A3D39 /* DisplayManager */,
-				C651EEC6C39FCC71871407C781B2B099 /* Measurable */,
 				D39F337ABC2684D8F392FB66266B91A5 /* Model */,
-				B92A75A5D6DAC7ABCA838E146F6D0E20 /* Section */,
+				8961D7142F6E92A49535EAF6F34554C8 /* Actions */,
+				FB37DC69BAF6DACB7A5234FC324A3D39 /* DisplayManager */,
+				F47459FFB0B3D8D89FAA2DA25D1097CA /* Configurable */,
+				C651EEC6C39FCC71871407C781B2B099 /* Measurable */,
 				2C8A52B05FC7B385E9A544BF4A7C04D1 /* SupplyView */,
+				B92A75A5D6DAC7ABCA838E146F6D0E20 /* Section */,
+				9FB52931BE6D961DD5262780D0C162FB /* Cell */,
 			);
 			name = Table;
 			path = CellKit/Classes/Table;
@@ -648,6 +745,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Victor Shabanov";
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -714,20 +812,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C97513223E237BC00928193 /* CollectionSectionObject.swift in Sources */,
 				C17641F0281E3EA09A9CAE31F86EF9EE /* CellKit-dummy.m in Sources */,
 				1F87924EF7AFDA2FF304B8152F33D8DB /* ConfigurableTableCell.swift in Sources */,
 				2FE03A1861ECFC15BB6C75B75B6EB69A /* ConfigurableTableSupplyView.swift in Sources */,
+				0C97512823E2363200928193 /* ConfigurableCollectionSupplyView.swift in Sources */,
+				0C97512323E2350100928193 /* CollectionCellObject.swift in Sources */,
+				0C97512123E234EE00928193 /* CollectionCellModel.swift in Sources */,
 				8CAA0813253CFBE5B822C8911F52E392 /* ConfigurableView.swift in Sources */,
 				EE9823AB83AB40B0E4C3251342BEBB7F /* Identifiable+Hashable.swift in Sources */,
 				D4DBA3503E77524039AB2F06BBD9D969 /* Identifiable.swift in Sources */,
 				0557FC3851A7EB380D6C76466C88DF6C /* ModelIdentifiable.swift in Sources */,
 				CAF3ED55FC501BFF6E31401E887CD5F8 /* ModelRepresentable.swift in Sources */,
+				0C97512E23E236E200928193 /* CollectionSupplyViewObject.swift in Sources */,
 				6CF9E882036531A1EE778F2204724F50 /* Proxy.swift in Sources */,
 				0FB9A83A4748AA8D57F7F8CA4921DFD6 /* Reusable.swift in Sources */,
+				0C97512C23E236D200928193 /* CollectionSupplyViewModel.swift in Sources */,
 				7A8D025DD98EE104AA1FA86A31384536 /* TableCellModel.swift in Sources */,
 				41F84ECF96BFD5E73E8FA2BF4D371D1B /* TableCellObject.swift in Sources */,
 				C2EDDDB5CA46596222C252A380C21025 /* TableDisplayManager.swift in Sources */,
 				323938B384E3E8178A6DD8743CD30CA0 /* TableMeasurable.swift in Sources */,
+				0C97512623E2360800928193 /* ConfigurableCollectionCell.swift in Sources */,
 				0C58477D23DE11E800249096 /* TableViewSupplyViewObject.swift in Sources */,
 				36B04D68F9F43BC81532DAF280EF1B26 /* TableModel.swift in Sources */,
 				0C58478323DE716200249096 /* CellAction.swift in Sources */,
@@ -741,6 +846,7 @@
 				6AE3F25DC09C99DC361A4F8322D6686D /* TableViewActions.swift in Sources */,
 				79DC62A0FE65123CCCE502F1D3953DA3 /* TableViewCell.swift in Sources */,
 				A2A23D313DCC38480E3E377F73CEB5C2 /* TableViewCellObject.swift in Sources */,
+				0C97511F23E2346700928193 /* CollectionMeasurable.swift in Sources */,
 				BD05C1E6B2B495359BCFE78FF37176BB /* TableViewModel.swift in Sources */,
 				ABFD5E475D97A5398656B91739D8487B /* TableViewSection.swift in Sources */,
 				BBA577E96BD8E3C9EAC51C943705D103 /* UITableView+Constants.swift in Sources */,
