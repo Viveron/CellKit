@@ -9,10 +9,10 @@
 Pod::Spec.new do |s|
   s.name             = 'CellKit'
   s.version          = '0.1.0'
-  s.summary          = 'CellKit is shortcuts and helpers for working with UITableView.'
+  s.summary          = 'Shortcuts and helpers for working with UITableView.'
 
   s.description      = <<-DESC
-Shortcuts and helpers for working with UITableView.
+CellKit is shortcuts and helpers for working with UITableView.
                        DESC
 
   s.homepage         = 'https://github.com/viveron/CellKit'
