@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CellKit'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Shortcuts and helpers for working with UITableView.'
 
   s.description      = <<-DESC

@@ -109,7 +109,11 @@ open class TableViewModel: NSObject, TableModel, UITableViewDataSource, UITableV
     }
     
     // MARK: - TableSectionObject mutations
-    
+
+    open func replace(sectionObjects: [TableSectionObject]) {
+        sections = sectionObjects
+    }
+
     @discardableResult
     open func append(sectionObject: TableSectionObject) -> Int {
         return append(sectionObjects: [sectionObject]).first!

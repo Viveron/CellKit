@@ -43,7 +43,12 @@ open class TableDisplayManager {
     }
     
     // MARK: - TableSectionObject mutations
-    
+
+    open func reload(with sectionObjects: [TableSectionObject]) {
+        model.replace(sectionObjects: sectionObjects)
+        tableView?.reloadData()
+    }
+
     open func append(sectionObject: TableSectionObject,
                      with animation: UITableView.RowAnimation = .none) {
         
